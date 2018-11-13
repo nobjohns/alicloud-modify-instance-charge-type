@@ -3,7 +3,7 @@ GOBUILD=$(GOCMD) build
 GOCLEAN=$(GOCMD) clean
 GOTEST=$(GOCMD) test
 GOGET=$(GOCMD) get
-BINARY_NAME=count-all-instances
+BINARY_NAME=modify-instance-charge-type
 VERSION=0.1.0
 ARCH=amd64
 BINARY_LINUX=$(BINARY_NAME)$(VERSION).linux-$(ARCH)
@@ -26,11 +26,6 @@ run:
 	$(GOBUILD) -o $(BINARY_NAME) -v ./...
 	./$(BINARY_NAME)
 
-deps:
-	$(GOGET) github.com/nobjohns/rep01
-	$(GOGET) github.com/nobjohns/rep02
-
-
 # Cross compilation
 build-linux:
 	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 $(GOBUILD) -o $(BINARY_LINUX) -v $(BINARY_NAME).go
@@ -40,6 +35,3 @@ build-darwin:
 
 build-windows:
 	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 $(GOBUILD) -o $(BINARY_WINDOWS) -v $(BINARY_NAME).go
-
-docker-build:
-	docker run --rm -it -v "$(GOPATH)":/go -w /go/src/nobjohns.com/account01/$(BINARY_NAME) golang:latest go build -o "$(BINARY_LINUX)" -v $(BINARY_NAME).go
