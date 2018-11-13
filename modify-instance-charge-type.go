@@ -9,6 +9,7 @@ import (
 	"github.com/howeyc/gopass"
 	"os"
 	"strings"
+	"time"
 )
 
 var (
@@ -30,6 +31,7 @@ func main() {
 	ecsClient = createEcsClient(region, key, secret)
 	instanceIds, period, periodUnit, chargeType = getParams()
 	modifyInstanceChargeType()
+	time.Sleep(10 * time.Second)
 	ModifyInstanceAutoRenewAttribute()
 }
 
