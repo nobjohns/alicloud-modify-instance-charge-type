@@ -102,7 +102,7 @@ func modifyInstanceChargeType() {
 	request.InstanceIds = string(a)
 	response, err := ecsClient.ModifyInstanceChargeType(request)
 	if err != nil {
-		panic(err)
+		//panic(err)
 	}
 	fmt.Println(response)
 }
@@ -117,7 +117,7 @@ func ModifyInstanceAutoRenewAttribute() {
 		request.InstanceId = i
 		response, err := ecsClient.ModifyInstanceAutoRenewAttribute(request)
 		if err != nil {
-			panic(err)
+			//panic(err)
 		}
 		fmt.Println(response)
 	}
