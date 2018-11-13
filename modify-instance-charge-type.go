@@ -98,13 +98,16 @@ func modifyInstanceChargeType() {
 	request.DryRun = requests.NewBoolean(dryRun)
 	request.AutoPay = requests.NewBoolean(autoPay)
 
-	a, _ := json.Marshal(instanceIds)
-	request.InstanceIds = string(a)
-	response, err := ecsClient.ModifyInstanceChargeType(request)
-	if err != nil {
-		//panic(err)
+	for _, i := range instanceIds {
+		j := [1]string{i}
+		k, _ := json.Marshal(j)
+		request.InstanceIds = string(k)
+		response, err := ecsClient.ModifyInstanceChargeType(request)
+		if err != nil {
+			//panic(err)
+		}
+		fmt.Println(response)
 	}
-	fmt.Println(response)
 }
 
 func ModifyInstanceAutoRenewAttribute() {
