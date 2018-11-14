@@ -19,7 +19,7 @@ var (
 	periodUnit       string
 	duration         = 12
 	chargeType       string
-	includeDataDisks = true
+	includeDataDisks = false
 	dryRun           = false
 	autoPay          = true
 	region           string
