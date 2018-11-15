@@ -1,0 +1,1 @@
+Tool to change instance subscription from PostPaid to PrePaid on Alicloud.
